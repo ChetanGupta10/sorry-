@@ -1,175 +1,403 @@
-<!-- This line specifies the document type as HTML -->
 <!DOCTYPE html>
-
-<!-- This line starts the HTML document and sets the default language to English -->
 <html lang="en">
-  <head>
-    <!-- This line specifies the character encoding used in the document -->
-    <meta charset="UTF-8" />
 
-    <!-- This line specifies the compatibility mode for Internet Explorer -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- This line sets the viewport properties for responsive web design -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Small Apology</title>
 
-    <!-- This line sets the title of the webpage that appears in the browser tab -->
-    <title>Spotify - Your favourite music is here</title>
+    <style>
 
-    <!-- This line links the external CSS file to style the webpage -->
-    <link rel="stylesheet" href="style.css" />
+        /* =========================
+           CSS
+        ========================= */
 
-    <!-- This line specifies the icon used in the browser tab -->
-    <link rel="icon" type="image/x-icon" href="icon.png" />
-  </head>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <body>
-    <!-- This code block defines the navigation bar of the webpage -->
-    <nav>
-      <ul>
-        <!-- This line defines the brand logo and text -->
-        <li class="brand"><img src="logo.png" alt="Spotify" /> Spotify</li>
-      </ul>
-    </nav>
-    <!-- This code block defines the main content area of the webpage -->
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 25px;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8f3ef,
+                    #eee5df,
+                    #f7f1ed
+                );
+
+            color: #332d29;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.92);
+
+            padding: 45px 40px;
+
+            border-radius: 28px;
+
+            text-align: center;
+
+            box-shadow:
+                0 20px 60px rgba(70, 50, 40, 0.15);
+
+            border: 1px solid rgba(80, 60, 50, 0.10);
+
+            animation: fadeUp 1s ease;
+        }
+
+        /* Heart */
+
+        .heart {
+            font-size: 48px;
+            color: #806b5d;
+            margin-bottom: 10px;
+
+            animation: heartbeat 2s infinite;
+        }
+
+        /* Heading */
+
+        h1 {
+            font-family: Georgia, serif;
+
+            font-size: 42px;
+
+            font-weight: 500;
+
+            margin-bottom: 18px;
+
+            color: #302a26;
+        }
+
+        /* Decorative line */
+
+        .line {
+            width: 55px;
+            height: 2px;
+
+            background: #927d6d;
+
+            margin: 0 auto 28px;
+        }
+
+        /* Paragraphs */
+
+        p {
+            font-size: 17px;
+
+            line-height: 1.8;
+
+            color: #625a54;
+
+            margin-bottom: 18px;
+        }
+
+        .intro {
+            color: #413a35;
+
+            font-size: 18px;
+
+            margin-bottom: 22px;
+        }
+
+        /* Main message */
+
+        .message-box {
+
+            background: #f5eee8;
+
+            border-radius: 18px;
+
+            padding: 22px 25px;
+
+            margin: 28px 0;
+
+            border-left: 3px solid #927d6d;
+        }
+
+        .message-box p {
+
+            color: #4d443e;
+
+            margin-bottom: 12px;
+        }
+
+        .message-box p:last-child {
+
+            margin-bottom: 0;
+        }
+
+        /* Button */
+
+        button {
+
+            margin-top: 12px;
+
+            padding: 14px 28px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background: #403731;
+
+            color: white;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+
+            transform: translateY(-3px);
+
+            background: #574a42;
+
+            box-shadow:
+                0 8px 20px rgba(50, 40, 30, 0.20);
+        }
+
+        /* Hidden message */
+
+        .hidden {
+
+            display: none;
+
+            margin-top: 25px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #e2d9d2;
+
+            animation: fadeIn 0.8s ease;
+        }
+
+        .hidden p {
+
+            font-size: 15px;
+
+            color: #756b64;
+
+            margin-bottom: 8px;
+        }
+
+        .small-heart {
+
+            font-size: 30px;
+
+            color: #927d6d;
+
+            margin-top: 10px;
+        }
+
+        /* Footer */
+
+        .footer {
+
+            margin-top: 30px;
+
+            font-size: 12px;
+
+            color: #aaa09a;
+        }
+
+        /* Animations */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heartbeat {
+
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .card {
+                padding: 35px 22px;
+                border-radius: 22px;
+            }
+
+            h1 {
+                font-size: 34px;
+            }
+
+            p {
+                font-size: 15px;
+            }
+
+            .message-box {
+                padding: 18px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
     <div class="container">
-      <div class="songList">
-        <!-- This line defines the title of the song list -->
-        <h1>Best of NCS - No Copyright Sounds</h1>
-        <!-- This code block defines the list of songs and their details -->
-        <div class="songItemContainer">
-          <div class="songItem">
-            <img alt="1" />
-            <span class="songName">On & On</span>
-            <span class="songlistplay"
-              ><span class="timestamp"
-                >02:50
-                <i id="0" class="far songItemPlay fa-play-circle"></i> </span
-            ></span>
-          </div>
-          <div class="songItem">
-            <img alt="1" />
-            <span class="songName">Invincible</span>
-            <span class="songlistplay"
-              ><span class="timestamp"
-                >02:50
-                <i id="1" class="far songItemPlay fa-play-circle"></i> </span
-            ></span>
-          </div>
-          <div class="songItem">
-            <img alt="1" />
-            <span class="songName">Mortals</span>
-            <span class="songlistplay"
-              ><span class="timestamp"
-                >02:50
-                <i id="2" class="far songItemPlay fa-play-circle"></i> </span
-            ></span>
-          </div>
-          <div class="songItem">
-            <img alt="1" />
-            <span class="songName">Shine</span>
-            <span class="songlistplay"
-              ><span class="timestamp"
-                >02:50
-                <i id="3" class="far songItemPlay fa-play-circle"></i> </span
-            ></span>
-          </div>
-          <div class="songItem">
-            <img alt="1" />
-            <span class="songName">Why We Lose </span>
-            <span class="songlistplay"
-              ><span class="timestamp"
-                >02:50
-                <i id="4" class="far songItemPlay fa-play-circle"></i> </span
-            ></span>
-          </div>
-          <div class="songItem">
-            <img alt="1" />
-            <span class="songName">Sky High</span>
-            <span class="songlistplay"
-              ><span class="timestamp"
-                >02:50
-                <i id="5" class="far songItemPlay fa-play-circle"></i> </span
-            ></span>
-          </div>
-          <div class="songItem">
-            <img alt="1" />
-            <span class="songName">Symbolism</span>
-            <span class="songlistplay"
-              ><span class="timestamp"
-                >02:50
-                <i id="6" class="far songItemPlay fa-play-circle"></i> </span
-            ></span>
-          </div>
-          <div class="songItem">
-            <img alt="1" />
-            <span class="songName">Heroes Tonight</span>
-            <span class="songlistplay"
-              ><span class="timestamp"
-                >02:50
-                <i id="7" class="far songItemPlay fa-play-circle"></i> </span
-            ></span>
-          </div>
-          <div class="songItem">
-            <img alt="1" />
-            <span class="songName">Feel Good</span>
-            <span class="songlistplay"
-              ><span class="timestamp"
-                >02:50
-                <i id="8" class="far songItemPlay fa-play-circle"></i> </span
-            ></span>
-          </div>
-          <div class="songItem">
-            <img alt="1" />
-            <span class="songName">My Heart</span>
-            <span class="songlistplay"
-              ><span class="timestamp"
-                >02:50
-                <i id="9" class="far songItemPlay fa-play-circle"></i> </span
-            ></span>
-          </div>
+
+        <div class="card">
+
+            <div class="heart">♡</div>
+
+            <h1>I'm Sorry</h1>
+
+            <div class="line"></div>
+
+
+            <p class="intro">
+                Hey, I wanted to say this properly.
+            </p>
+
+
+            <p>
+                Mujhe samajhna chahiye tha ki mujhe us din aise nahi
+                bolna chahiye tha. Meri baat galat thi, aur mujhe
+                genuinely uska regret hai.
+            </p>
+
+
+            <div class="message-box">
+
+                <p>
+                    I never meant to make you uncomfortable or disrespect you.
+                    But I understand that my intention doesn't make what I said okay.
+                </p>
+
+                <p>
+                    I should have understood my limits, and I'm sorry that I didn't.
+                </p>
+
+            </div>
+
+
+            <p>
+                I'm genuinely sorry. I'm not expecting anything from you.
+                I just wanted to acknowledge my mistake and say sorry properly.
+            </p>
+
+
+            <p>
+                And about being friends, I completely respect that.
+                We can keep things normal and comfortable.
+            </p>
+
+
+            <button id="sorryButton">
+                One last thing
+            </button>
+
+
+            <div id="hiddenMessage" class="hidden">
+
+                <p>
+                    You don't have to reply to this.
+                </p>
+
+                <p>
+                    I just didn't want to leave things without saying sorry.
+                </p>
+
+                <div class="small-heart">
+                    ♡
+                </div>
+
+            </div>
+
+
+            <div class="footer">
+                Made with a sincere apology, nothing more.
+            </div>
+
         </div>
-      </div>
-      <div class="songBanner"></div>
+
     </div>
 
-    <!-- A bottom div for displaying song controls -->
-    <div class="bottom">
-      <!-- A progress bar input element -->
-      <input
-        type="range"
-        name="range"
-        id="myProgressBar"
-        min="0"
-        value="0"
-        max="100"
-      />
-      <!-- A container div for fontawesome icons -->
-      <div class="icons">
-        <!-- A fontawesome icon for previous song -->
-        <i class="fas fa-3x fa-step-backward" id="previous"></i>
-        <!-- A fontawesome icon for playing/pausing the current song -->
-        <i class="far fa-3x fa-play-circle" id="masterPlay"></i>
-        <!-- A fontawesome icon for next song -->
-        <i class="fas fa-3x fa-step-forward" id="next"></i>
-      </div>
-      <!-- A div for displaying the current song information -->
-      <div class="songInfo">
-        <!-- An image of a playing animation -->
-        <img src="playing.gif" width="42px" alt="" id="gif" />
-        <!-- The name of the currently playing song -->
-        <span id="masterSongName">On & On-Cartoon, Daniel Levi</span>
-      </div>
-    </div>
-    <!-- A script tag for including a JavaScript file -->
-    <script src="script.js"></script>
-    <!-- A script tag for including the fontawesome icon library -->
-    <script
-      src="https://kit.fontawesome.com/26504e4a1f.js"
-      crossorigin="anonymous"
-    ></script>
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        const button = document.getElementById("sorryButton");
+
+        const hiddenMessage =
+            document.getElementById("hiddenMessage");
 
 
-    
-  </body>
+        button.addEventListener("click", function () {
+
+            hiddenMessage.style.display = "block";
+
+            button.style.display = "none";
+
+        });
+
+    </script>
+
+</body>
+
 </html>
